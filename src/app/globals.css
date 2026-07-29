@@ -1,26 +1,135 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ---------------------------------------------------------------------------
+   Togala display face — the engraved-caps font used on the Wix site.
+   Self-hosted copy of the face that was uploaded to the Togala Wix account.
+   System "Copperplate" is listed first so macOS/iOS render the native face.
+--------------------------------------------------------------------------- */
+@font-face {
+  font-family: "Togala Display";
+  src:
+    url("/fonts/togala-display.woff2") format("woff2"),
+    url("/fonts/togala-display.woff") format("woff");
+  font-weight: 400 700;
+  font-style: normal;
+  font-display: swap;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+@theme {
+  /* Brand palette, sampled from togalacb.com */
+  --color-forest: #093a22; /* deep green section field */
+  --color-forest-800: #0c4a2c;
+  --color-forest-600: #16603a;
+  --color-ink: #0e0e0f; /* near-black */
+  --color-ink-700: #2d2d2d;
+  --color-clay: #f36e48; /* signature orange */
+  --color-clay-600: #e05a34;
+  --color-lime: #00b042; /* bright accent green */
+  --color-moss: #2b844d; /* mid green */
+  --color-bone: #f5f6f6; /* off-white */
+
+  --font-sans: var(--font-montserrat), ui-sans-serif, system-ui, sans-serif;
+  --font-display:
+    "Copperplate", "Copperplate Gothic Bold", "Togala Display",
+    var(--font-cinzel), serif;
+
+  --shadow-lift: 0 24px 60px -24px rgb(0 0 0 / 0.55);
+
+  --animate-marquee: marquee 42s linear infinite;
+
+  /* ── Motion ──────────────────────────────────────────────────────────────
+     One easing curve and three durations for the whole site, so hover states
+     and reveals feel like they come from the same hand.
+       swift  — color / opacity swaps
+       glide  — transforms: lifts, arrow nudges, panel slides
+       drift  — large slow moves: image zooms, scroll reveals             */
+  --ease-out-soft: cubic-bezier(0.22, 1, 0.36, 1);
+  --duration-swift: 200ms;
+  --duration-glide: 450ms;
+  --duration-drift: 700ms;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
   }
 }
 
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  /* The header is fixed, so anchor targets must clear it or they land
+     underneath it (the hero's "SCROLL" link jumps to #approach). */
+  scroll-padding-top: 6rem;
+}
+
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-bone);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--color-clay);
+  color: #fff;
+}
+
+/* Focus ring that stays legible on both the green and orange fields */
+:where(a, button, input, textarea, select, summary):focus-visible {
+  outline: 3px solid var(--color-lime);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* --- Reusable type helpers ------------------------------------------------ */
+.display-eyebrow {
+  font-family: var(--font-display);
+  letter-spacing: 0.05em;
+  text-transform: lowercase;
+}
+
+/* ---------------------------------------------------------------------------
+   Togala "T" weave pattern.
+   The source PNG is white monograms on black, so it is used as a MASK rather
+   than an image — the tint paints only where the monograms are, leaving the
+   section color underneath untouched. Tiles at a fixed size so the monograms
+   stay a consistent scale no matter how tall the section is.
+--------------------------------------------------------------------------- */
+.brand-pattern::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background-color: var(--pattern-tint, rgb(255 255 255 / 0.085));
+  mask-image: url("/img/texture-10.png");
+  mask-repeat: repeat;
+  mask-size: 1800px 1800px;
+  -webkit-mask-image: url("/img/texture-10.png");
+  -webkit-mask-repeat: repeat;
+  -webkit-mask-size: 1800px 1800px;
+}
+
+/* --- Type scale ----------------------------------------------------------
+   Two body sizes cover every paragraph on the site. Defining them here keeps
+   arbitrary `text-[1.02rem]` values from drifting apart across sections.     */
+.t-lead {
+  font-size: 1.0625rem;
+  line-height: 1.8;
+}
+.t-body {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .animate-marquee {
+    animation: none !important;
+  }
 }
