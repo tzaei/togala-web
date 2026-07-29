@@ -1,0 +1,17 @@
+# Netlify build configuration.
+#
+# Without the Next.js plugin Netlify treats the output as a plain static folder,
+# finds no index.html at the publish root, and 404s every route — including
+# /robots.txt. The plugin wires up Next's routing and, importantly, runs the
+# /api/contact route as a function; a static deploy cannot serve it at all.
+
+[build]
+  command = "npm run build"
+  publish = ".next"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
+
+[build.environment]
+  # Next.js 16 requires a modern Node; pin it so builds don't drift.
+  NODE_VERSION = "20"
