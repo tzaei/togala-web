@@ -94,7 +94,15 @@ export default function SiteFooter() {
         </div>
 
         <div className="mt-14 flex flex-col items-center gap-4 border-t border-white/10 pt-8 sm:flex-row sm:justify-between">
-          <p className="text-xs tracking-wide text-bone/60">{site.copyright}</p>
+          <div className="flex items-center gap-4">
+            <p className="text-xs tracking-wide text-bone/60">{site.copyright}</p>
+            <Link
+              href="/terms-and-conditions"
+              className="text-xs tracking-wide text-bone/60 transition-colors duration-(--duration-swift) hover:text-clay"
+            >
+              Terms &amp; Conditions
+            </Link>
+          </div>
           <Link
             href="/togala-select"
             className="flex items-center gap-2 text-xs font-bold tracking-[0.2em] text-bone/60 transition-colors duration-(--duration-swift) hover:text-clay"

@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pointing togalacb.com at the new website</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif; color: #1a1a1a; line-height: 1.6; padding: 3rem 2rem; max-width: 820px; margin: 0 auto; }
+  h1 { font-size: 1.65rem; margin-bottom: 0.4rem; }
+  h2 { font-size: 1.2rem; margin-top: 2.2rem; margin-bottom: 0.8rem; border-bottom: 2px solid #093a22; padding-bottom: 0.3rem; color: #093a22; }
+  p, li { font-size: 0.95rem; margin-bottom: 0.6rem; }
+  .subtitle { color: #555; font-size: 0.95rem; margin-bottom: 1.6rem; }
+  .note { background: #f0f7f3; border-left: 4px solid #093a22; padding: 0.8rem 1rem; margin: 1rem 0; font-size: 0.88rem; color: #333; }
+  .warning { background: #fef3f0; border-left: 4px solid #e74c3c; padding: 0.8rem 1rem; margin: 1rem 0; }
+  .warning strong { color: #c0392b; }
+  table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: 0.88rem; }
+  th { background: #093a22; color: #fff; text-align: left; padding: 0.55rem 0.7rem; font-weight: 600; }
+  td { padding: 0.5rem 0.7rem; border-bottom: 1px solid #ddd; vertical-align: top; }
+  tr:nth-child(even) td { background: #f9fafb; }
+  code { background: #e8ecef; padding: 0.15rem 0.35rem; border-radius: 3px; font-size: 0.86rem; font-family: "SF Mono", Menlo, Consolas, monospace; }
+  ol { padding-left: 1.4rem; margin: 0.6rem 0; }
+  ol li { margin-bottom: 0.5rem; }
+  ul { padding-left: 1.4rem; margin: 0.6rem 0; }
+  hr { border: none; border-top: 1px solid #ddd; margin: 2rem 0; }
+  .rollback { background: #fffbe6; border: 1px solid #e6d85e; border-radius: 6px; padding: 1rem 1.2rem; margin: 1rem 0; }
+  .footer { margin-top: 2.5rem; font-size: 0.8rem; color: #888; font-style: italic; }
+  @media print { body { padding: 1rem; } }
+</style>
+</head>
+<body>
+
+<h1>Pointing togalacb.com at the new website</h1>
+<p class="subtitle">For whoever has access to the Squarespace account that manages <code>togalacb.com</code>.</p>
+
+<p>This is a <strong>DNS change only</strong>. The domain stays registered with Squarespace, under the same account, with the same owner. Nothing is transferred and nothing changes hands. Two records are updated so the domain serves the new website instead of the Wix one.</p>
+
+<p>It takes about five minutes and is reversible in the same five minutes.</p>
+
+<h2>What changes &mdash; exactly two things</h2>
+
+<table>
+  <thead>
+    <tr><th>#</th><th>Type</th><th>Host / Name</th><th>Current value</th><th>Change to</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>A</td>
+      <td><code>@</code></td>
+      <td><code>185.230.63.107</code> (and .171, .186)</td>
+      <td><strong><code>75.2.60.5</code></strong></td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>CNAME</td>
+      <td><code>www</code></td>
+      <td><code>cdn1.wixdns.net</code></td>
+      <td><strong><code>famous-madeleine-ce8004.netlify.app</code></strong></td>
+    </tr>
+  </tbody>
+</table>
+
+<div class="note">
+  <strong>Values confirmed from the Netlify dashboard, 29 July 2026.</strong><br><br>
+  Netlify's preferred setup uses an ALIAS/ANAME record pointing at <code>apex-loadbalancer.netlify.com</code>. Squarespace's DNS does not support that record type, so the <strong>A record above is the correct option here</strong> &mdash; it is Netlify's documented fallback, and <code>75.2.60.5</code> is an anycast address that still routes globally.<br><br>
+  There are currently <strong>three</strong> A records on <code>@</code> (<code>185.230.63.107</code>, <code>185.230.63.171</code>, <code>185.230.63.186</code>). All three are Wix. Delete all three and add the single new one.
+</div>
+
+<h2>What must NOT change</h2>
+
+<div class="warning">
+  <strong>These are the company's Microsoft 365 email. Deleting or editing any of them stops email arriving.</strong> They have nothing to do with the website.
+</div>
+
+<table>
+  <thead>
+    <tr><th>Type</th><th>Host</th><th>Value</th><th>What it does</th></tr>
+  </thead>
+  <tbody>
+    <tr><td>MX</td><td><code>@</code></td><td><code>togalacb-com.mail.protection.outlook.com</code></td><td><strong>Delivers all company email</strong></td></tr>
+    <tr><td>TXT</td><td><code>@</code></td><td><code>v=spf1 include:spf.protection.outlook.com -all</code></td><td>Stops mail being marked as spam</td></tr>
+    <tr><td>CNAME</td><td><code>autodiscover</code></td><td><code>autodiscover.outlook.com</code></td><td>Lets Outlook configure on new devices</td></tr>
+    <tr><td>A</td><td><code>webmail</code></td><td><code>192.185.21.142</code></td><td>Webmail access</td></tr>
+    <tr><td>TXT</td><td><code>@</code></td><td><code>linkedin-site-verification=49f4291e-&hellip;</code></td><td>Verifies LinkedIn page</td></tr>
+    <tr><td>CNAME</td><td><code>_dmarc</code></td><td><code>_dmarc.wixemails.com</code></td><td>Email authentication</td></tr>
+    <tr><td>CNAME</td><td><code>s1._domainkey</code></td><td><code>s1._domainkey.togalacb.com.s019.ascendbywix.com</code></td><td>Email signing</td></tr>
+    <tr><td>CNAME</td><td><code>s2._domainkey</code></td><td><code>s2._domainkey.togalacb.com.s019.ascendbywix.com</code></td><td>Email signing</td></tr>
+  </tbody>
+</table>
+
+<p><strong>Rule of thumb:</strong> if the record is not one of the two in the first table, leave it alone.</p>
+
+<h2>Steps in Squarespace</h2>
+
+<ol>
+  <li>Sign in at <code>account.squarespace.com</code></li>
+  <li><strong>Domains</strong> &rarr; <strong>togalacb.com</strong> &rarr; <strong>DNS</strong> / <strong>DNS Settings</strong></li>
+  <li>Find the <strong>A records</strong> for host <code>@</code> pointing at <code>185.230.63.x</code>. Delete all three.</li>
+  <li>Add one A record: host <code>@</code>, value = <code>75.2.60.5</code></li>
+  <li>Find the <strong>CNAME</strong> for host <code>www</code> pointing at <code>cdn1.wixdns.net</code>. Edit its value to <code>famous-madeleine-ce8004.netlify.app</code></li>
+  <li>Save.</li>
+</ol>
+
+<p>Do not change nameservers. Do not unlock or transfer the domain. Neither is needed.</p>
+
+<h2>What to expect</h2>
+
+<ul>
+  <li>Most visitors see the new site within <strong>15&ndash;60 minutes</strong>; some ISPs can take up to 24 hours.</li>
+  <li>During that window some people see the old site and some the new. Both work &mdash; this is normal DNS propagation, not a fault.</li>
+  <li><strong>Email is unaffected throughout</strong>, because none of the mail records are touched.</li>
+</ul>
+
+<h2>If anything looks wrong &mdash; rollback</h2>
+
+<div class="rollback">
+  Put the original values back and everything returns to how it is today:
+  <ul style="margin-top:0.5rem">
+    <li>A record, host <code>@</code> &rarr; <code>185.230.63.107</code>, <code>185.230.63.171</code>, <code>185.230.63.186</code></li>
+    <li>CNAME, host <code>www</code> &rarr; <code>cdn1.wixdns.net</code></li>
+  </ul>
+  Same propagation delay applies in reverse.
+</div>
+
+<h2>Also worth doing</h2>
+
+<p>Add a second person to the Squarespace account with access to domain settings. Right now one person is the only route to changing DNS for both the website and company email. If that account becomes unreachable, so does the domain.</p>
+
+<p class="footer">Captured from live DNS on 29 July 2026. Full record inventory in DNS-MIGRATION.md.</p>
+
+</body>
+</html>
