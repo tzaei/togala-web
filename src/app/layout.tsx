@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import Script from "next/script";
 import { Cinzel, Montserrat } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
@@ -56,6 +57,14 @@ export default function RootLayout({
       lang="en"
       className={`${montserrat.variable} ${cinzel.variable} h-full antialiased`}
     >
+      <head>
+        <Script
+          defer
+          data-domain="togalacb.com"
+          src="https://plausible.io/js/script.js"
+          strategy="afterInteractive"
+        />
+      </head>
       <body className="flex min-h-full flex-col bg-bone text-ink">
         <a
           href="#main"
