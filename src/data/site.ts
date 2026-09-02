@@ -127,6 +127,8 @@ export type ServicePage = {
   metaTitle: string;
   metaDescription: string;
   image: string;
+  /** Descriptive alt text for the banner image. */
+  imageAlt: string;
 };
 
 export const servicePageContent: ServicePage[] = [
@@ -163,6 +165,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Destructive testing coordination, defect evaluation, and repair planning that help owners resolve complex construction issues with clarity and control.",
     image: "/img/banners/defect-inspection.jpg",
+    imageAlt: "Inspector examining building exterior",
   },
   {
     slug: "capital-improvement-strategy",
@@ -197,6 +200,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Capital improvement consulting that aligns budgets, timelines, and scope to your asset strategy for HOAs, healthcare facilities, and multifamily portfolios.",
     image: "/img/banners/capital-multifamily.jpg",
+    imageAlt: "Modern multifamily apartment building",
   },
   {
     slug: "large-loss-reconstruction-management",
@@ -231,6 +235,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Large-loss reconstruction management coordinating assessment, insurance alignment, contractor oversight, and reconstruction schedules — a documented path to full recovery.",
     image: "/img/banners/largeloss-fire.jpg",
+    imageAlt: "Fire-damaged building structure",
   },
   {
     slug: "commercial-roofing",
@@ -265,6 +270,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Commercial roofing services covering system condition, lifespan, performance expectations, and warranty requirements — select, budget, and oversee with confidence.",
     image: "/img/banners/roofing-tearoff.jpg",
+    imageAlt: "Aerial view of commercial roof replacement",
   },
   {
     slug: "hospitality-retail-renovation-planning",
@@ -299,6 +305,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Renovation planning and construction consulting for hospitality and retail that minimizes disruption and protects commercial performance during improvements.",
     image: "/img/banners/entrance.jpg",
+    imageAlt: "Hospitality building entrance",
   },
   {
     slug: "property-recovery-services",
@@ -333,6 +340,7 @@ export const servicePageContent: ServicePage[] = [
     metaDescription:
       "Property recovery consulting overseeing assessment, stabilization, mitigation, and the transition into reconstruction, with 24/7 access for Togala Select members.",
     image: "/img/banners/recovery-crew.jpg",
+    imageAlt: "Restoration crew coordinating on site",
   },
 ];
 

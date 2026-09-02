@@ -21,6 +21,7 @@ export default function TogalaSelectPage() {
       headline="CONFIDENCE ON CALL."
       intro={selectContent.intro}
       image="/img/banners/towers.jpg"
+      imageAlt="High-rise towers against the sky"
     >
       {/* ── Program benefits ─────────────────────────────────────────────── */}
       <section aria-labelledby="benefits-heading" className="bg-bone">

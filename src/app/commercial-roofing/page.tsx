@@ -10,6 +10,26 @@ export const metadata: Metadata = {
   description: content.metaDescription,
 };
 
+const serviceJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Service",
+  name: content.metaTitle,
+  description: content.metaDescription,
+  provider: {
+    "@type": "LocalBusiness",
+    "@id": "https://www.togalacb.com/#organization",
+    name: "Togala Contractor Builder",
+  },
+};
+
 export default function Page() {
-  return <ServiceDetail slug={SLUG} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
+      />
+      <ServiceDetail slug={SLUG} />
+    </>
+  );
 }

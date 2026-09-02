@@ -18,7 +18,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <PageShell eyebrow="about togala" headline={aboutContent.kicker} image="/img/banners/crew.jpg">
+    <PageShell eyebrow="about togala" headline={aboutContent.kicker} image="/img/banners/crew.jpg" imageAlt="Togala construction crew on site">
       {/* ── Who we are ─────────────────────────────────────────────────────── */}
       <section aria-labelledby="story-heading" className="bg-bone">
         <div className="mx-auto max-w-[1060px] px-6 py-12 lg:px-10 lg:py-14">

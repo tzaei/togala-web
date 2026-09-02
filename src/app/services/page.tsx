@@ -19,6 +19,7 @@ export default function ServicesPage() {
       headline="EXPERTISE ACROSS RESTORATION, RECONSTRUCTION, & CAPITAL IMPROVEMENT"
       intro="Our services bridge the gap between construction and consultation. Togala provides hands-on expertise in construction defect consulting, emergency property recovery, commercial roofing systems, and strategic capital improvement planning."
       image="/img/banners/plans.jpg"
+      imageAlt="Construction plans spread on a table"
     >
       <section className="bg-bone">
         <div className="mx-auto max-w-[1280px] px-6 py-12 lg:px-10 lg:py-12">

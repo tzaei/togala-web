@@ -17,6 +17,7 @@ export default function PageShell({
   headline,
   intro,
   image,
+  imageAlt = "",
   imagePosition = "center 32%",
   children,
 }: {
@@ -25,6 +26,8 @@ export default function PageShell({
   intro?: string;
   /** Full-bleed banner photograph for this page. */
   image?: string;
+  /** Descriptive alt text for the banner photograph. */
+  imageAlt?: string;
   /** Which part of the photo to keep when it crops to the banner strip. */
   imagePosition?: string;
   children?: ReactNode;
@@ -45,8 +48,8 @@ export default function PageShell({
         <div className="relative aspect-16/5 max-h-[440px] min-h-[210px] w-full overflow-hidden">
           <Image
             src={image}
-            alt=""
-            aria-hidden
+            alt={imageAlt}
+            aria-hidden={!imageAlt || undefined}
             fill
             sizes="100vw"
             priority

@@ -19,6 +19,7 @@ export default function ContactPage() {
       headline="LET'S TALK ABOUT YOUR PROPERTY."
       intro="Have a project, question, or property challenge you'd like to discuss? Our team is here to help. Reach out and we'll connect you with the right director to review your needs and outline next steps."
       image="/img/banners/contact-foundation.jpg"
+      imageAlt="Foundation work at a construction site"
     >
       <section aria-labelledby="form-heading" className="bg-bone">
         <div className="mx-auto max-w-[1060px] px-6 py-12 lg:px-10 lg:py-14">

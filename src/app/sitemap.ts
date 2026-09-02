@@ -3,7 +3,11 @@ import { nav, servicePages, site } from "@/data/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const paths = [
-    ...new Set([...nav.map((n) => n.href), ...servicePages.map((s) => s.href)]),
+    ...new Set([
+      ...nav.map((n) => n.href),
+      ...servicePages.map((s) => s.href),
+      "/terms-and-conditions",
+    ]),
   ];
 
   return paths.map((path) => ({

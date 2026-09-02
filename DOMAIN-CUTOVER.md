@@ -14,8 +14,16 @@ It takes about five minutes and is reversible in the same five minutes.
 
 | # | Type  | Host / Name | Current value                | Change to |
 |---|-------|-------------|------------------------------|-----------|
-| 1 | A     | `@`         | `185.230.63.107` *(and .171, .186)* | **_new host IP — supplied at launch_** |
-| 2 | CNAME | `www`       | `cdn1.wixdns.net`            | **_new host target — supplied at launch_** |
+| 1 | A     | `@`         | `185.230.63.107` *(and .171, .186)* | `75.2.60.5` |
+| 2 | CNAME | `www`       | `cdn1.wixdns.net`            | `famous-madeleine-ce8004.netlify.app` |
+
+> **Values confirmed from the Netlify dashboard, 29 July 2026.**
+>
+> Netlify's *preferred* setup uses an ALIAS/ANAME record pointing at
+> `apex-loadbalancer.netlify.com`. Squarespace's DNS does not support that
+> record type, so the **A record above is the correct option here** — it is
+> Netlify's documented fallback, and `75.2.60.5` is an anycast address that
+> still routes globally.
 
 There are currently **three** A records on `@` (`185.230.63.107`, `185.230.63.171`,
 `185.230.63.186`). All three are Wix. Delete all three and add the single new one.
@@ -47,9 +55,9 @@ email arriving.** They have nothing to do with the website.
 1. Sign in at `account.squarespace.com`
 2. **Domains** → **togalacb.com** → **DNS** / **DNS Settings**
 3. Find the **A records** for host `@` pointing at `185.230.63.x`. Delete all three.
-4. Add one A record: host `@`, value = the new IP supplied at launch.
+4. Add one A record: host `@`, value = `75.2.60.5`.
 5. Find the **CNAME** for host `www` pointing at `cdn1.wixdns.net`. Edit its value to the
-   new target supplied at launch.
+   `famous-madeleine-ce8004.netlify.app`.
 6. Save.
 
 Do not change nameservers. Do not unlock or transfer the domain. Neither is needed.

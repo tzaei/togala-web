@@ -24,7 +24,7 @@ export default function ServiceCard({
       <div className="relative aspect-16/10 overflow-hidden">
         <Image
           src={image}
-          alt=""
+          alt={title}
           width={1200}
           height={900}
           priority={priority}

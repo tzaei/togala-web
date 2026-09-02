@@ -20,6 +20,7 @@ export default function ServiceDetail({ slug }: { slug: string }) {
       headline={page.kicker}
       intro={page.intro}
       image={page.image}
+      imageAlt={page.imageAlt}
     >
       {/* ── Process ────────────────────────────────────────────────────────── */}
       <section aria-labelledby="process-heading" className="bg-bone">

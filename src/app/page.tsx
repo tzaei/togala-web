@@ -6,7 +6,7 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import SideSwoosh from "@/components/SideSwoosh";
 import { processIcons } from "@/components/ProcessIcons";
-import { audiences, clientLogos, processSteps, serviceCards } from "@/data/site";
+import { audiences, clientLogos, processSteps, serviceCards, site, social } from "@/data/site";
 
 /* Spacing rhythm shared by every band on the page:
      section    py-12 lg:py-14   outer band padding
@@ -17,9 +17,38 @@ import { audiences, clientLogos, processSteps, serviceCards } from "@/data/site"
 const STAGGER = 70;
 const AFTER_HEADING = 90;
 
+const localBusinessJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "LocalBusiness",
+  "@id": "https://www.togalacb.com/#organization",
+  name: site.name,
+  url: site.url,
+  description: site.description,
+  areaServed: { "@type": "Country", name: "US" },
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Denver",
+    addressRegion: "CO",
+    addressCountry: "US",
+  },
+  sameAs: social.map((s) => s.href),
+  serviceType: [
+    "Construction Defect Consulting",
+    "Capital Improvement Strategy",
+    "Large Loss Reconstruction Management",
+    "Commercial Roofing",
+    "Hospitality & Retail Renovation Planning",
+    "Property Recovery Services",
+  ],
+};
+
 export default function Home() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
+      />
       <Hero />
 
       {/* ── Approach + who we serve — deep green band ──────────────────────── */}
