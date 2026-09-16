@@ -31,15 +31,22 @@
 # URL can open it. If it ever needs to be genuinely private it wants a password,
 # not a longer slug.
 #
-# The trailing-slash redirect is load-bearing. The kit's asset paths are all
-# relative, so served at `/<slug>` (no slash) every `brand/...` reference would
-# resolve against the site root and 404. `force = true` on both rules is what
-# gets them ahead of the Next.js catch-all the Netlify plugin installs.
+# The first rule is load-bearing. The kit's asset paths are all relative, so
+# served at `/<slug>` (no slash) every `brand/...` reference would resolve
+# against the site root and 404. It has to send the bare slug to
+# `/<slug>/index.html` and NOT to `/<slug>/`: Netlify matches `/path` and
+# `/path/` as the same route, so a rule pointing at its own trailing-slash form
+# matches its own target and loops until the browser gives up. Redirecting to
+# the index file is a genuinely different path, and it leaves the URL ending in
+# a filename so the relative asset paths still resolve against `/<slug>/`.
+#
+# `force = true` on both rules is what gets them ahead of the Next.js catch-all
+# the Netlify plugin installs.
 # ---------------------------------------------------------------------------
 
 [[redirects]]
   from = "/brand-guidelines-e8e7d9b1a9ea47e8"
-  to = "/brand-guidelines-e8e7d9b1a9ea47e8/"
+  to = "/brand-guidelines-e8e7d9b1a9ea47e8/index.html"
   status = 301
   force = true
 
