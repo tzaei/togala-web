@@ -4,9 +4,14 @@ import CtaButton from "@/components/CtaButton";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
+import { CommunityIcon, sectorIcons } from "@/components/SectorIcons";
 import { selectContent } from "@/data/site";
 
 const STAGGER = 70;
+
+const audienceIcons = [CommunityIcon, sectorIcons.Healthcare, sectorIcons.Multifamily];
+
+const card = "rounded-2xl bg-white shadow-md shadow-ink/[0.06] ring-1 ring-ink/8";
 
 export const metadata: Metadata = {
   title: "Togala Select",
@@ -19,21 +24,20 @@ export default function TogalaSelectPage() {
     <PageShell
       eyebrow="togala select"
       headline="CONFIDENCE ON CALL."
-      intro={selectContent.intro}
       image="/img/banners/towers.jpg"
       imageAlt="High-rise towers against the sky"
     >
-      {/* ── Program benefits ─────────────────────────────────────────────── */}
+      {/* ── Intro + program benefits ─────────────────────────────────────── */}
       <section aria-labelledby="benefits-heading" className="bg-bone">
-        <div className="mx-auto max-w-[1060px] px-6 py-12 lg:px-10 lg:py-14">
-          <div className="flex flex-col items-center gap-6 text-center">
+        <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">
+          <div className="flex flex-col items-center text-center">
             <Image
               src="/img/togala-select-icon.png"
               alt=""
               aria-hidden
               width={512}
               height={512}
-              className="size-14 w-auto"
+              className="mb-6 size-14 w-auto"
             />
             <SectionHeading
               id="benefits-heading"
@@ -43,23 +47,31 @@ export default function TogalaSelectPage() {
             />
           </div>
 
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
+          <Reveal delay={90}>
+            <p className="mx-auto mt-6 max-w-[62ch] text-center text-[1rem] leading-[1.75] text-ink-700">
+              {selectContent.intro}
+            </p>
+          </Reveal>
+
+          <ul className="mt-8 grid gap-2.5 sm:mt-10 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3">
             {selectContent.benefits.map((benefit, i) => (
               <Reveal as="li" key={benefit} delay={i * STAGGER} className="h-full">
-                <div className="flex h-full items-start gap-4 rounded-xl border border-ink/10 bg-white p-6">
-                  <svg
-                    viewBox="0 0 24 24"
-                    aria-hidden
-                    className="mt-0.5 size-5 shrink-0 text-lime"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2.5}
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                  >
-                    <path d="m5 12.5 4.5 4.5L19 7.5" />
-                  </svg>
-                  <p className="t-body text-ink-700">{benefit}</p>
+                <div className={`${card} flex h-full items-center gap-3 px-4 py-3.5 sm:items-start sm:gap-4 sm:p-6`}>
+                  <span className="flex size-7 shrink-0 items-center justify-center rounded-full bg-clay/10 text-clay sm:size-8">
+                    <svg
+                      viewBox="0 0 24 24"
+                      aria-hidden
+                      className="size-4"
+                      fill="none"
+                      stroke="currentColor"
+                      strokeWidth={2.5}
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                    >
+                      <path d="m5 12.5 4.5 4.5L19 7.5" />
+                    </svg>
+                  </span>
+                  <p className="text-[0.875rem] leading-[1.5] text-ink-700 sm:pt-1 sm:text-[0.9375rem] sm:leading-[1.7]">{benefit}</p>
                 </div>
               </Reveal>
             ))}
@@ -67,56 +79,56 @@ export default function TogalaSelectPage() {
         </div>
       </section>
 
-      {/* ── Who it's for + how it works ────────────────────────────────────── */}
+      {/* ── Who it's for + how it works + enrollment ───────────────────────── */}
       <section
-        aria-labelledby="how-heading"
+        aria-labelledby="who-heading"
         className="brand-pattern relative isolate overflow-hidden bg-forest text-bone [--pattern-tint:rgb(255_255_255/0.07)] after:-z-10"
       >
-        <div className="mx-auto max-w-[1060px] px-6 py-12 lg:px-10 lg:py-14">
-          <SectionHeading kicker="BUILT FOR" eyebrow="who it's for" />
-          <ul className="mt-8 grid gap-3 sm:grid-cols-3">
-            {selectContent.audience.map((who, i) => (
-              <Reveal as="li" key={who} delay={i * STAGGER} className="h-full">
-                <div className="flex h-full items-center justify-center rounded-xl border border-white/10 bg-white/5 px-5 py-7 text-center text-[0.95rem] font-bold tracking-wide">
-                  {who}
-                </div>
-              </Reveal>
-            ))}
+        <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">
+          <SectionHeading id="who-heading" kicker="BUILT FOR" eyebrow="who it's for" />
+          <ul className="mx-auto mt-8 grid max-w-[56rem] gap-2.5 sm:mt-10 sm:grid-cols-3 sm:gap-4">
+            {selectContent.audience.map((who, i) => {
+              const Icon = audienceIcons[i];
+              return (
+                <Reveal as="li" key={who} delay={i * STAGGER} className="h-full">
+                  <div className={`${card} flex h-full items-center gap-3.5 px-4 py-3.5 sm:flex-col sm:justify-center sm:gap-3 sm:px-5 sm:py-7 sm:text-center`}>
+                    <span className="flex size-10 shrink-0 items-center justify-center rounded-full bg-forest/[0.07] sm:size-auto sm:bg-transparent">
+                      <Icon className="size-6 text-forest sm:size-10" />
+                    </span>
+                    <span className="text-[0.88rem] font-bold tracking-[0.06em] text-ink sm:text-[0.9rem]">{who}</span>
+                  </div>
+                </Reveal>
+              );
+            })}
           </ul>
 
-          <div className="mt-12 border-t border-white/10 pt-12">
-            <SectionHeading
-              id="how-heading"
-              kicker="FROM ENROLLMENT TO MOBILIZATION"
-              eyebrow="how it works"
-            />
-            <ol className="mx-auto mt-8 max-w-3xl">
+          <div className="mt-14 border-t border-white/10 pt-14">
+            <SectionHeading kicker="FROM ENROLLMENT TO MOBILIZATION" eyebrow="how it works" />
+            <ol className="mt-8 grid gap-2.5 sm:mt-10 sm:grid-cols-2 sm:gap-6 lg:grid-cols-4">
               {selectContent.howItWorks.map((step, i) => (
-                <Reveal as="li" key={step} delay={i * STAGGER}>
-                  <div className="flex items-start gap-5 border-b border-white/10 py-5">
-                    <span className="font-display text-[1.5rem] leading-none text-clay tabular-nums">
+                <Reveal as="li" key={step} delay={i * STAGGER} className="h-full">
+                  <div className={`${card} flex h-full items-center gap-4 px-4 py-4 sm:flex-col sm:items-start sm:gap-0 sm:p-7`}>
+                    <span className="w-9 shrink-0 font-display text-[1.6rem] leading-none text-clay sm:w-auto sm:text-[2rem]">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <p className="t-body pt-1 text-bone/90">{step}</p>
+                    <p className="text-[0.875rem] leading-[1.5] text-ink-700 sm:mt-4 sm:text-[0.9375rem] sm:leading-[1.7]">{step}</p>
                   </div>
                 </Reveal>
               ))}
             </ol>
           </div>
 
-          {/* ── Enrollment ──────────────────────────────────────────────────── */}
-          <Reveal delay={90} className="mt-14">
-            <div className="mx-auto max-w-2xl rounded-2xl border border-clay/40 bg-clay/10 p-8 text-center sm:p-10">
-              <h2 className="display-eyebrow text-[1.75rem] text-clay sm:text-[2rem]">
-                enrollment
-              </h2>
-              <p className="t-lead mx-auto mt-4 max-w-[52ch] text-bone/85">
-                {selectContent.enrollment}
-              </p>
-              <CtaButton href="/contact-us" size="lg" className="mt-8">
-                CONTACT YOUR REPRESENTATIVE
-              </CtaButton>
-            </div>
+          <Reveal delay={90} className="mt-14 border-t border-white/10 pt-14 text-center">
+            <p className="text-[0.68rem] font-bold tracking-[0.3em] text-lime">BY INVITATION ONLY</p>
+            <h2 className="display-eyebrow mt-3 text-[2.2rem] leading-[0.95] text-clay sm:text-[2.6rem]">
+              enrollment
+            </h2>
+            <p className="mx-auto mt-6 max-w-[48ch] text-[1rem] leading-[1.75] text-bone/80">
+              {selectContent.enrollment}
+            </p>
+            <CtaButton href="/contact-us" size="lg" className="mt-8">
+              CONTACT YOUR REPRESENTATIVE
+            </CtaButton>
           </Reveal>
         </div>
       </section>

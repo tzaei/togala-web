@@ -23,7 +23,7 @@ export default function ServicesPage() {
     >
       <section className="bg-bone">
         <div className="mx-auto max-w-[1280px] px-6 py-12 lg:px-10 lg:py-12">
-          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="grid gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {serviceCards.map((card, i) => (
               <Reveal key={card.title} delay={i * 70} className="h-full">
                 <ServiceCard {...card} priority={i < 3} />

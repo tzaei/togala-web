@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import ArrowIcon from "./ArrowIcon";
-import { servicePages } from "@/data/site";
+import { servicePages, site } from "@/data/site";
 
 type Status = "idle" | "sending" | "sent" | "error";
 
@@ -41,9 +41,9 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <div className="rounded-2xl border border-lime/40 bg-lime/10 p-10 text-center">
-        <h2 className="display-eyebrow text-[1.75rem] text-forest">thank you</h2>
-        <p className="t-lead mx-auto mt-3 max-w-[46ch] text-ink-700">
+      <div className="brand-pattern relative isolate overflow-hidden rounded-2xl bg-forest p-10 text-center [--pattern-tint:rgb(255_255_255/0.07)] after:-z-10">
+        <h2 className="display-eyebrow text-[1.75rem] text-clay">thank you</h2>
+        <p className="t-lead mx-auto mt-3 max-w-[46ch] text-bone/85">
           Your enquiry is with us. We&rsquo;ll connect you with the right
           director and outline next steps.
         </p>
@@ -79,12 +79,25 @@ export default function ContactForm() {
           </label>
           <input id="email" name="email" type="email" required autoComplete="email" className={field} />
         </div>
-        <div>
+        <div className="sm:col-span-2">
           <label className={label} htmlFor="company">
             COMPANY
           </label>
           <input id="company" name="company" autoComplete="organization" className={field} />
         </div>
+      </div>
+
+      <div>
+        <span className={label}>PROPERTY ADDRESS</span>
+        <input name="address" placeholder="Street" autoComplete="street-address" className={field} />
+        <div className="mt-3 grid gap-3 sm:grid-cols-[2fr_1fr_1fr]">
+          <input name="city" placeholder="City" autoComplete="address-level2" className={field} />
+          <input name="state" placeholder="State" autoComplete="address-level1" className={field} />
+          <input name="zip" placeholder="ZIP" autoComplete="postal-code" className={field} />
+        </div>
+      </div>
+
+      <div className="grid gap-3 sm:grid-cols-2">
         <div>
           <label className={label} htmlFor="service">
             SERVICE NEEDED
@@ -99,19 +112,11 @@ export default function ContactForm() {
             <option value="Other / not sure">Other / not sure</option>
           </select>
         </div>
-      </div>
-
-      {/* Property address — one labelled block, four inputs on two rows */}
-      <div>
-        <span className={label}>PROPERTY ADDRESS</span>
-        <div className="grid gap-3 sm:grid-cols-[2fr_1fr]">
-          <input name="address" placeholder="Street" autoComplete="street-address" className={field} />
-          <input name="city" placeholder="City" autoComplete="address-level2" className={field} />
-        </div>
-        <div className="mt-3 grid gap-3 sm:grid-cols-[1fr_1fr_2fr]">
-          <input name="state" placeholder="State" autoComplete="address-level1" className={field} />
-          <input name="zip" placeholder="ZIP" autoComplete="postal-code" className={field} />
-          <input name="timeline" placeholder="Timeline / start date" className={field} />
+        <div>
+          <label className={label} htmlFor="timeline">
+            TIMELINE
+          </label>
+          <input id="timeline" name="timeline" placeholder="e.g. ASAP, Q1 2027" className={field} />
         </div>
       </div>
 
@@ -124,7 +129,15 @@ export default function ContactForm() {
 
       {status === "error" && (
         <p role="alert" className="rounded-lg border border-clay/50 bg-clay/10 px-3.5 py-2.5 text-[0.85rem] text-ink">
-          {error} You can also reach us directly by email.
+          {error} You can also reach us at{" "}
+          <a href={`mailto:${site.email}`} className="font-semibold text-clay underline">
+            {site.email}
+          </a>{" "}
+          or{" "}
+          <a href={site.phoneHref} className="font-semibold text-clay underline">
+            {site.phone}
+          </a>
+          .
         </p>
       )}
 

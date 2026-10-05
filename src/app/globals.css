@@ -78,13 +78,6 @@ body {
   color: #fff;
 }
 
-/* Focus ring that stays legible on both the green and orange fields */
-:where(a, button, input, textarea, select, summary):focus-visible {
-  outline: 3px solid var(--color-lime);
-  outline-offset: 3px;
-  border-radius: 2px;
-}
-
 /* --- Reusable type helpers ------------------------------------------------ */
 .display-eyebrow {
   font-family: var(--font-display);
@@ -99,18 +92,58 @@ body {
    section color underneath untouched. Tiles at a fixed size so the monograms
    stay a consistent scale no matter how tall the section is.
 --------------------------------------------------------------------------- */
+/* Cuts the header background along the underside of the white swoosh so it
+   reads as one shape. Sized/positioned to match the 460px swoosh img (lg+),
+   which sits translate-y-[60%] below the header: 0.6 × 183.6px = 110.16px. */
+@media (min-width: 64rem) {
+  .header-bg {
+    --swoosh-cut: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 2662.9 1063.1' preserveAspectRatio='none'%3E%3Cpath d='M2258.2,441.9C1801.7,585,1329.5,340.5,877.8,289c-261.5-29.8-535.6,9.4-770.2,130.1c-36.1,18.6-70.3,40.4-105.9,59.7L0,478.8L0,1063.1L2258.2,1063.1Z'/%3E%3C/svg%3E");
+    mask-image: linear-gradient(#000, #000), var(--swoosh-cut);
+    mask-size: 100% 100%, 460px 183.64px;
+    mask-position: 0 0, left 0 bottom -110.18px;
+    mask-repeat: no-repeat;
+    mask-composite: exclude;
+    -webkit-mask-image: linear-gradient(#000, #000), var(--swoosh-cut);
+    -webkit-mask-size: 100% 100%, 460px 183.64px;
+    -webkit-mask-position: 0 0, left 0 bottom -110.18px;
+    -webkit-mask-repeat: no-repeat;
+    -webkit-mask-composite: xor;
+  }
+}
+
+/* Soft left edge on the slide-out menu; phones get the full-width panel unfaded. */
+@media (min-width: 40rem) {
+  .menu-panel-fade {
+    mask-image: linear-gradient(to right, transparent, black 140px);
+    -webkit-mask-image: linear-gradient(to right, transparent, black 140px);
+  }
+}
+
+/* Orange hairline between every page section. Skips the aria-hidden header spacer. */
+main > :is(section, div):not([aria-hidden]) + :is(section, div),
+main ~ :is(div, footer) {
+  border-top: 2px solid transparent;
+  border-image: linear-gradient(
+      to right,
+      transparent,
+      color-mix(in srgb, var(--color-clay) 80%, transparent),
+      transparent
+    )
+    1;
+}
+
 .brand-pattern::after {
   content: "";
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background-color: var(--pattern-tint, rgb(255 255 255 / 0.085));
+  background-color: var(--pattern-tint, rgb(255 255 255 / 0.12));
   mask-image: url("/img/texture-10.png");
   mask-repeat: repeat;
-  mask-size: 1800px 1800px;
+  mask-size: 1400px 1400px;
   -webkit-mask-image: url("/img/texture-10.png");
   -webkit-mask-repeat: repeat;
-  -webkit-mask-size: 1800px 1800px;
+  -webkit-mask-size: 1400px 1400px;
 }
 
 /* --- Type scale ----------------------------------------------------------

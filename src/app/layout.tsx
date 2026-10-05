@@ -4,6 +4,7 @@ import { Cinzel, Montserrat } from "next/font/google";
 import "./globals.css";
 import SiteHeader from "@/components/SiteHeader";
 import SiteFooter from "@/components/SiteFooter";
+import CtaBanner from "@/components/CtaBanner";
 import { site } from "@/data/site";
 
 const montserrat = Montserrat({
@@ -78,6 +79,7 @@ export default function RootLayout({
         <main id="main" className="flex-1">
           {children}
         </main>
+        <CtaBanner />
         <SiteFooter />
       </body>
     </html>

@@ -6,6 +6,9 @@ export const site = {
   description:
     "Togala Contractor Builder provides commercial property assessments and real estate due diligence services across Colorado and nationwide. Specializing in construction defect analysis, capital improvement planning, roofing, reconstruction, and emergency recovery, Togala supports asset owners and managers with clear, actionable insights for smarter investment and long-term asset performance.",
   copyright: "© 2020-2026 Togala Contractor Builder",
+  phone: "(877) 864-2521",
+  phoneHref: "tel:+18778642521",
+  email: "info@togalacb.com",
 } as const;
 
 export const social = [
@@ -59,37 +62,37 @@ export const serviceCards = [
     title: "Emergency Response & Mitigation",
     href: "/property-recovery-services",
     image: "/img/banners/recovery-crew.jpg",
-    body: "Rapid emergency response services for fire, water, and structural damage. Togala's mitigation team stabilizes properties fast, prevents further loss, and coordinates restoration from the first hour through full recovery.",
+    body: "Rapid stabilization for fire, water, and structural damage from the first hour through full recovery.",
   },
   {
     title: "Construction Defect Repair",
     href: "/construction-defect-consulting",
     image: "/img/banners/defect-inspection.jpg",
-    body: "Expert construction defect repair backed by forensic evaluation and root-cause analysis. Togala identifies system failures, designs compliant repair scopes, and restores buildings to long-term performance standards.",
+    body: "Forensic evaluation, root-cause analysis, and compliant repair scopes for long-term performance.",
   },
   {
     title: "Capital Improvements",
     href: "/capital-improvement-strategy",
     image: "/img/banners/capital-multifamily.jpg",
-    body: "Strategic capital improvement planning and execution for multifamily, commercial, and hospitality assets. Togala strengthens building performance with modern upgrades, façade enhancements, and lifecycle-driven renovations.",
+    body: "Lifecycle-driven upgrades and renovation planning for multifamily, commercial, and hospitality assets.",
   },
   {
     title: "Commercial Roofing",
     href: "/commercial-roofing",
     image: "/img/banners/roofing-tearoff.jpg",
-    body: "Full-service commercial roofing solutions including inspections, repairs, replacements, and ongoing maintenance. Togala delivers durable, code-compliant roofing systems designed for long-term protection and performance.",
+    body: "Inspections, replacements, and maintenance with durable, code-compliant roofing systems.",
   },
   {
     title: "Large Loss Reconstruction",
     href: "/large-loss-reconstruction-management",
     image: "/img/banners/largeloss-fire.jpg",
-    body: "Comprehensive large-loss reconstruction for fire, water, structural, and catastrophic events. Togala manages everything from demolition to full rebuilds, restoring properties safely, efficiently, and to pre-loss condition or better.",
+    body: "End-to-end reconstruction management for catastrophic events, from demolition to full rebuild.",
   },
   {
-    title: "& More!",
+    title: "& More",
     href: "/services",
     image: "/img/banners/entrance.jpg",
-    body: "Nationwide construction and restoration solutions tailored to ownership groups, commercial operators, and asset managers. Togala delivers high-level consulting, project management, property assessments, and specialty services across diverse project types.",
+    body: "Consulting, project management, and specialty services for ownership groups and asset managers nationwide.",
   },
 ] as const;
 

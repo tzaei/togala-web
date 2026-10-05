@@ -21,12 +21,23 @@ export default function SiteHeader() {
   return (
     <>
       <header
-        className={`fixed inset-x-0 top-0 z-50 transition-[background-color,box-shadow,backdrop-filter] duration-(--duration-swift) ${
-          scrolled
-            ? "bg-forest/95 shadow-[0_10px_30px_-20px_rgba(0,0,0,0.9)] backdrop-blur-md"
-            : "bg-forest"
-        }`}
+        className="fixed inset-x-0 top-0 z-50 isolate"
       >
+        {/* drop-shadow on the wrapper follows the masked shape; box-shadow would stay rectangular */}
+        <div
+          aria-hidden
+          className={`absolute inset-0 -z-10 transition-[filter] duration-(--duration-swift) ${
+            scrolled ? "drop-shadow-[0_8px_12px_rgba(0,0,0,0.35)]" : ""
+          }`}
+        >
+          <div
+            className={`header-bg absolute inset-0 transition-[background-color,backdrop-filter] duration-(--duration-swift) ${
+              scrolled ? "bg-forest/95 backdrop-blur-md" : "bg-forest"
+            }`}
+          >
+            <div className="absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-lime/40 to-transparent" />
+          </div>
+        </div>
         <div className="relative mx-auto flex h-20 max-w-[1600px] items-center px-4 sm:px-6 lg:h-24 lg:px-10">
           {/* Wordmark — centred on desktop, flush left on small screens */}
           <Link
@@ -94,7 +105,14 @@ export default function SiteHeader() {
             </button>
           </div>
         </div>
-        <div className="h-px w-full bg-gradient-to-r from-transparent via-lime/40 to-transparent" />
+
+        {/* Swoosh accent that breaks out of the nav rectangle */}
+        <img
+          src="/img/togala-swoosh.svg"
+          alt=""
+          aria-hidden
+          className="pointer-events-none absolute bottom-0 left-0 hidden translate-y-[60%] lg:block lg:w-[460px]"
+        />
       </header>
 
       <MenuOverlay open={open} onClose={() => setOpen(false)} items={nav} />
