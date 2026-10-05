@@ -1,11 +1,12 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import CtaButton from "@/components/CtaButton";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { CommunityIcon, sectorIcons } from "@/components/SectorIcons";
-import { selectContent } from "@/data/site";
+import { selectContent, site } from "@/data/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, ORG_ID, pageMetadata } from "@/lib/seo";
 
 const STAGGER = 70;
 
@@ -13,10 +14,28 @@ const audienceIcons = [CommunityIcon, sectorIcons.Healthcare, sectorIcons.Multif
 
 const card = "rounded-2xl bg-white shadow-md shadow-ink/[0.06] ring-1 ring-ink/8";
 
-export const metadata: Metadata = {
-  title: "Togala Select",
-  description:
-    "Togala Select is an invitation-only program giving property owners and managers priority access to Togala's nationwide 24/7 emergency response network.",
+export const metadata = pageMetadata({
+  title: "Togala Select: 24/7 Emergency Response Program",
+  description: "Togala Select is an invitation-only program giving property owners and managers priority access to Togala's nationwide 24/7 emergency response network.",
+  path: "/togala-select",
+});
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Service",
+      "@id": `${site.url}/togala-select#service`,
+      name: "Togala Select",
+      serviceType: "24/7 emergency response program",
+      description: selectContent.intro,
+      url: `${site.url}/togala-select`,
+      provider: { "@id": ORG_ID },
+      areaServed: { "@type": "Country", name: "United States" },
+      audience: selectContent.audience.map((a) => ({ "@type": "Audience", audienceType: a })),
+    },
+    breadcrumbJsonLd([{ name: "Togala Select", path: "/togala-select" }]),
+  ],
 };
 
 export default function TogalaSelectPage() {
@@ -27,6 +46,7 @@ export default function TogalaSelectPage() {
       image="/img/banners/towers.jpg"
       imageAlt="High-rise towers against the sky"
     >
+      <JsonLd data={pageJsonLd} />
       {/* ── Intro + program benefits ─────────────────────────────────────── */}
       <section aria-labelledby="benefits-heading" className="bg-bone">
         <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">

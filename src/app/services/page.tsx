@@ -1,15 +1,33 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import ArrowIcon from "@/components/ArrowIcon";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import ServiceCard from "@/components/ServiceCard";
-import { serviceCards, servicePages } from "@/data/site";
+import { serviceCards, servicePages, site } from "@/data/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
-  title: "Services",
-  description:
-    "Construction defect consulting, capital improvement strategy, large loss reconstruction management, commercial roofing, hospitality and retail renovation planning, and property recovery services — nationwide.",
+export const metadata = pageMetadata({
+  title: "Construction & Restoration Consulting Services",
+  description: "Construction defect consulting, capital improvement strategy, large loss reconstruction, commercial roofing, renovation planning, and property recovery, nationwide.",
+  path: "/services",
+});
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Togala Contractor Builder services",
+      itemListElement: servicePages.map((s, i) => ({
+        "@type": "ListItem",
+        position: i + 1,
+        name: s.title,
+        url: `${site.url}${s.href}`,
+      })),
+    },
+    breadcrumbJsonLd([{ name: "Services", path: "/services" }]),
+  ],
 };
 
 export default function ServicesPage() {
@@ -21,6 +39,7 @@ export default function ServicesPage() {
       image="/img/banners/plans.jpg"
       imageAlt="Construction plans spread on a table"
     >
+      <JsonLd data={pageJsonLd} />
       <section className="bg-bone">
         <div className="mx-auto max-w-[1280px] px-6 py-12 lg:px-10 lg:py-12">
           <div className="grid gap-3 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">

@@ -1,10 +1,11 @@
 export const site = {
   name: "Togala Contractor Builder",
   shortName: "Togala",
-  url: "https://www.togalacb.com",
-  title: "Togala Contractor Builder | Nationwide",
+  // Apex is canonical: www.togalacb.com 301s here.
+  url: "https://togalacb.com",
+  title: "Property Restoration & Construction Consulting in Denver | Togala",
   description:
-    "Togala Contractor Builder provides commercial property assessments and real estate due diligence services across Colorado and nationwide. Specializing in construction defect analysis, capital improvement planning, roofing, reconstruction, and emergency recovery, Togala supports asset owners and managers with clear, actionable insights for smarter investment and long-term asset performance.",
+    "Denver general contractor for construction defect consulting, large loss reconstruction, commercial roofing, and property recovery. Serving asset owners nationwide.",
   copyright: "© 2020-2026 Togala Contractor Builder",
   phone: "(877) 864-2521",
   phoneHref: "tel:+18778642521",

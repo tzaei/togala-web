@@ -20,15 +20,18 @@ export default function Hero() {
       />
 
       <div className="flex flex-1 flex-col items-center justify-center px-6 pt-24 pb-4 sm:px-8 lg:pt-28">
-        <p className="text-[0.64rem] font-bold tracking-[0.3em] text-lime sm:text-[0.7rem]">
-          PROPERTY RESTORATION &amp; CONSTRUCTION CONSULTING
-        </p>
-
-        {/* Font tracks viewport width so line one always fits: exactly two lines at every size. */}
-        <h1 className="mt-4 text-center font-display text-[clamp(1.1rem,calc(6.3vw-3px),3.8rem)] leading-[1.05] tracking-[0.03em] text-white">
-          <span className="block whitespace-nowrap">HELPING YOU GET BACK TO</span>
-          <span className="block whitespace-nowrap">
-            BUSINESS <span className="text-clay">FASTER</span>.
+        {/* The kicker sits inside the h1 so the page's main heading carries the service keywords. */}
+        <h1 className="text-center">
+          <span className="block text-[0.64rem] font-bold tracking-[0.3em] text-lime sm:text-[0.7rem]">
+            PROPERTY RESTORATION &amp; CONSTRUCTION CONSULTING
+            <span className="sr-only">: </span>
+          </span>
+          {/* Font tracks viewport width so line one always fits: exactly two lines at every size. */}
+          <span className="mt-4 block font-display text-[clamp(1.1rem,calc(6.3vw-3px),3.8rem)] leading-[1.05] tracking-[0.03em] text-white">
+            <span className="block whitespace-nowrap">HELPING YOU GET BACK TO</span>
+            <span className="block whitespace-nowrap">
+              BUSINESS <span className="text-clay">FASTER</span>.
+            </span>
           </span>
         </h1>
 

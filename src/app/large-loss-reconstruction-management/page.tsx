@@ -1,34 +1,21 @@
-import type { Metadata } from "next";
+import JsonLd from "@/components/JsonLd";
 import ServiceDetail from "@/components/ServiceDetail";
 import { servicePageContent } from "@/data/site";
+import { pageMetadata, serviceJsonLd } from "@/lib/seo";
 
 const SLUG = "large-loss-reconstruction-management";
 const content = servicePageContent.find((p) => p.slug === SLUG)!;
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: content.metaTitle,
   description: content.metaDescription,
-};
-
-const serviceJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Service",
-  name: content.metaTitle,
-  description: content.metaDescription,
-  provider: {
-    "@type": "LocalBusiness",
-    "@id": "https://www.togalacb.com/#organization",
-    name: "Togala Contractor Builder",
-  },
-};
+  path: `/${SLUG}`,
+});
 
 export default function Page() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(serviceJsonLd) }}
-      />
+      <JsonLd data={serviceJsonLd(SLUG)} />
       <ServiceDetail slug={SLUG} />
     </>
   );

@@ -1,10 +1,16 @@
-import type { Metadata } from "next";
 import PageShell from "@/components/PageShell";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Terms & Conditions",
-  description:
-    "Project Master Terms and Conditions for Togala Contractor Builder.",
+  description: "Project Master Terms and Conditions for Togala Contractor Builder, covering owner use of contractor services.",
+  path: "/terms-and-conditions",
+});
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  ...breadcrumbJsonLd([{ name: "Terms & Conditions", path: "/terms-and-conditions" }]),
 };
 
 const PDF_HREF = "/_files/ugd/3c851e_a3c375afe8dd4900ad92f39fe27f48d4.pdf";
@@ -15,6 +21,7 @@ export default function TermsPage() {
       eyebrow="project master terms and conditions"
       headline="UPDATED AUGUST 8, 2022"
     >
+      <JsonLd data={pageJsonLd} />
       <section className="bg-bone">
         <div className="mx-auto max-w-[820px] px-6 py-12 lg:py-16">
           <a

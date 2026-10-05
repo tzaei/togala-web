@@ -1,15 +1,29 @@
-import type { Metadata } from "next";
 import Link from "next/link";
 import ContactForm from "@/components/ContactForm";
 import PageShell from "@/components/PageShell";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { site } from "@/data/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, ORG_ID, pageMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata = pageMetadata({
   title: "Contact Us",
-  description:
-    "Contact Togala Contractor Builder about a project, question, or property challenge. We'll connect you with the right director to review your needs and outline next steps.",
+  description: "Call (877) 864-2521, email info@togalacb.com, or send your project details and Togala will connect you with the right director to outline next steps.",
+  path: "/contact-us",
+});
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ContactPage",
+      url: `${site.url}/contact-us`,
+      name: "Contact Togala Contractor Builder",
+      about: { "@id": ORG_ID },
+    },
+    breadcrumbJsonLd([{ name: "Contact Us", path: "/contact-us" }]),
+  ],
 };
 
 const cardLabel = "text-[0.68rem] font-bold tracking-[0.26em]";
@@ -53,6 +67,7 @@ export default function ContactPage() {
       image="/img/banners/contact-foundation.jpg"
       imageAlt="Foundation work at a construction site"
     >
+      <JsonLd data={pageJsonLd} />
       <section aria-labelledby="form-heading" className="bg-bone">
         <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">
           <SectionHeading

@@ -1,4 +1,3 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import CtaButton from "@/components/CtaButton";
@@ -7,7 +6,9 @@ import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import ProcessCard from "@/components/ProcessCard";
 import { sectorIcons } from "@/components/SectorIcons";
-import { aboutContent, processSteps, servicePages, team } from "@/data/site";
+import { aboutContent, processSteps, servicePages, site, team } from "@/data/site";
+import JsonLd from "@/components/JsonLd";
+import { breadcrumbJsonLd, ORG_ID, pageMetadata, teamJsonLd } from "@/lib/seo";
 
 const STAGGER = 70;
 
@@ -29,15 +30,32 @@ const pillars = [
   },
 ];
 
-export const metadata: Metadata = {
-  title: "About",
-  description:
-    "Based in the Rocky Mountain Region, Togala Contractor Builder is a general contractor working with property owners, asset managers, and consultants across multifamily, hospitality, healthcare, retail and commercial property.",
+export const metadata = pageMetadata({
+  title: "About Togala",
+  description: "Meet Togala Contractor Builder, a Denver general contractor serving property owners and asset managers across multifamily, hospitality, healthcare, retail, and commercial.",
+  path: "/about",
+});
+
+const pageJsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "AboutPage",
+      "@id": `${site.url}/about#page`,
+      url: `${site.url}/about`,
+      name: "About Togala Contractor Builder",
+      about: { "@id": ORG_ID },
+      mainEntity: { "@id": ORG_ID },
+    },
+    ...teamJsonLd(),
+    breadcrumbJsonLd([{ name: "About", path: "/about" }]),
+  ],
 };
 
 export default function AboutPage() {
   return (
     <PageShell eyebrow="about togala" headline={aboutContent.kicker} image="/img/banners/crew.jpg" imageAlt="Togala construction crew on site">
+      <JsonLd data={pageJsonLd} />
       {/* ── Who we are ─────────────────────────────────────────────────────── */}
       <section aria-labelledby="story-heading" className="bg-bone">
         <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">

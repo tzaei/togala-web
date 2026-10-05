@@ -6,35 +6,18 @@ import SectionHeading from "@/components/SectionHeading";
 import ServiceCard from "@/components/ServiceCard";
 import SideSwoosh from "@/components/SideSwoosh";
 import ProcessCard from "@/components/ProcessCard";
-import { audiences, clientLogos, processSteps, serviceCards, site, social } from "@/data/site";
+import { audiences, clientLogos, processSteps, serviceCards, site } from "@/data/site";
+import { pageMetadata } from "@/lib/seo";
+
+export const metadata = pageMetadata({
+  title: site.title,
+  description: site.description,
+  path: "/",
+  absoluteTitle: true,
+});
 
 const STAGGER = 70;
 const AFTER_HEADING = 90;
-
-const localBusinessJsonLd = {
-  "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  "@id": "https://www.togalacb.com/#organization",
-  name: site.name,
-  url: site.url,
-  description: site.description,
-  areaServed: { "@type": "Country", name: "US" },
-  address: {
-    "@type": "PostalAddress",
-    addressLocality: "Denver",
-    addressRegion: "CO",
-    addressCountry: "US",
-  },
-  sameAs: social.map((s) => s.href),
-  serviceType: [
-    "Construction Defect Consulting",
-    "Capital Improvement Strategy",
-    "Large Loss Reconstruction Management",
-    "Commercial Roofing",
-    "Hospitality & Retail Renovation Planning",
-    "Property Recovery Services",
-  ],
-};
 
 const pillars = [
   {
@@ -57,10 +40,6 @@ const pillars = [
 export default function Home() {
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(localBusinessJsonLd) }}
-      />
       <Hero />
 
       {/* ── Approach + who we serve ─────────────────────────────────────── */}
