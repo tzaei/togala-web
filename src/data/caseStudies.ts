@@ -214,9 +214,9 @@ export const caseStudies: CaseStudy[] = [
       "Dedicated project management helped coordinate the different trades, maintain safe and organized work areas, and keep the renovation moving efficiently from demolition through final installation.",
     ],
     facts: [],
-    image: "/img/case-studies/amberwood-post-acute.jpg",
-    imageSize: { width: 2000, height: 1333 },
-    imageAlt: "Amberwood Post Acute entrance and sign",
+    image: "/img/case-studies/amberwood/exterior-sign.jpg",
+    imageSize: { width: 1772, height: 1316 },
+    imageAlt: "Amberwood Post Acute front entrance and sign",
     gallery: [
       {
         title: "before & after",
@@ -274,7 +274,6 @@ export const caseStudies: CaseStudy[] = [
           { src: "/img/case-studies/amberwood/lobby-lounge.jpg", alt: "Lobby lounge with a tiled fireplace, blue sofa, and the nurses' station beyond", caption: "Lobby and nurses' station", width: 1800, height: 1202 },
           { src: "/img/case-studies/amberwood/hallway.jpg", alt: "Bright resident corridor with new flooring", caption: "Resident corridor", width: 1800, height: 1196 },
           { src: "/img/case-studies/amberwood/finished-handrail.jpg", alt: "New corridor handrail and stone tile corner", caption: "Handrail and stone detail", width: 1600, height: 1066 },
-          { src: "/img/case-studies/amberwood/exterior-sign.jpg", alt: "Amberwood Post Acute entrance sign and landscaping", caption: "Front entrance", width: 1772, height: 1316 },
           { src: "/img/case-studies/amberwood/aerial-roof.jpg", alt: "Aerial view of the Amberwood building and courtyard", caption: "From above", width: 1766, height: 1326 },
         ],
       },
