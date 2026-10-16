@@ -162,6 +162,42 @@ export const caseStudies: CaseStudy[] = [
     image: "/img/case-studies/wellington-village.jpg",
     imageSize: { width: 2000, height: 1125 },
     imageAlt: "Aerial view of streets, landscaping, and townhomes at Wellington Village",
+    gallery: [
+      {
+        title: "drainage & site work",
+        photos: [
+          { src: "/img/case-studies/wellington/site-vac-crew.jpg", alt: "Crew using a vacuum excavation truck to expose drain lines", caption: "Vacuum excavation to locate drain lines", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/site-excavator-wide.jpg", alt: "Mini excavator regrading between townhome buildings", caption: "Regrading between buildings", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/site-crew-dig.jpg", alt: "Crew members excavating along a drainage swale", caption: "Exposing below-grade lines", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/site-excavation.jpg", alt: "Excavated pit showing old and new below-grade drain lines", caption: "Below-grade drain line replacement", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/site-excavator-street.jpg", alt: "Excavator working near a new area inlet by the street", caption: "New area inlet", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/site-drain-line.jpg", alt: "Drain line exposed inside a fenced excavation", caption: "Drain line exposed for repair", width: 1200, height: 1600 },
+        ],
+      },
+      {
+        title: "attic framing & firestopping",
+        quote: "Whenever possible, repairs were completed from attic or basement spaces to reduce the impact on occupied areas.",
+        photos: [
+          { src: "/img/case-studies/wellington/attic-framing-2.jpg", alt: "Attic with corrected roof truss framing", caption: "Roof truss corrections", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/attic-sheathing-1.jpg", alt: "New fire-rated gypsum sheathing installed in an attic", caption: "Fire-rated sheathing", width: 1200, height: 1600 },
+          { src: "/img/case-studies/wellington/attic-framing-3.jpg", alt: "Reinforced truss connections in the attic", caption: "Truss reinforcement", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/attic-framing-4.jpg", alt: "Attic framing after corrections", caption: "Framing corrections", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/attic-sheathing-2.jpg", alt: "Fire-rated sheathing between attic framing members", caption: "Firestopping at separation walls", width: 1200, height: 1600 },
+          { src: "/img/case-studies/wellington/attic-framing-1.jpg", alt: "Attic separation wall with new fire-rated sheathing", caption: "Fire-resistive assembly repairs", width: 1600, height: 1200 },
+        ],
+      },
+      {
+        title: "window well repairs",
+        photos: [
+          { src: "/img/case-studies/wellington/well-old-out.jpg", alt: "Window well excavated beside a townhome foundation", caption: "Old window well removed", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/well-digging.jpg", alt: "Crew member digging out a window well", caption: "Digging out the well", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/well-new-1.jpg", alt: "New window well with grate being set", caption: "New well going in", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/well-new-2.jpg", alt: "New window well with grate installed", caption: "New well and grate", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/well-finished-1.jpg", alt: "Finished window well with rock and landscaping restored", caption: "Finished and landscaping restored", width: 1600, height: 1200 },
+          { src: "/img/case-studies/wellington/well-finished-2.jpg", alt: "Finished window well beside a townhome", caption: "Finished window well", width: 1600, height: 1200 },
+        ],
+      },
+    ],
   },
   {
     slug: "sky-ridge-medical-center",
