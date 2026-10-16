@@ -73,7 +73,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "85%", label: "Envelope replaced" },
     ],
     image: "/img/case-studies/the-viv-on-west-dallas.jpg",
-    imageSize: { width: 1800, height: 726 },
+    imageSize: { width: 2000, height: 1334 },
     imageAlt: "The Viv on West Dallas pool courtyard surrounded by four-story apartment buildings",
   },
   {
@@ -102,7 +102,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "8 mo", label: "To completion" },
     ],
     image: "/img/case-studies/veridian-at-bellevue.jpg",
-    imageSize: { width: 1800, height: 691 },
+    imageSize: { width: 2000, height: 1334 },
     imageAlt: "Veridian at Bellevue courtyard with a covered grill pavilion between brick apartment buildings",
   },
   {
@@ -132,7 +132,7 @@ export const caseStudies: CaseStudy[] = [
       { value: "18 mo", label: "Fully occupied" },
     ],
     image: "/img/case-studies/threesixty-at-south-bay.jpg",
-    imageSize: { width: 1800, height: 598 },
+    imageSize: { width: 2000, height: 1335 },
     imageAlt: "Gated entrance to Threesixty at South Bay lined with palm trees",
   },
   {
@@ -160,8 +160,8 @@ export const caseStudies: CaseStudy[] = [
     ],
     facts: [],
     image: "/img/case-studies/wellington-village.jpg",
-    imageSize: { width: 1800, height: 327 },
-    imageAlt: "Excavator working on drainage beside townhomes at Wellington Village",
+    imageSize: { width: 2000, height: 1125 },
+    imageAlt: "Aerial view of streets, landscaping, and townhomes at Wellington Village",
   },
   {
     slug: "sky-ridge-medical-center",
@@ -186,7 +186,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     facts: [],
     image: "/img/case-studies/sky-ridge-medical-center.jpg",
-    imageSize: { width: 1800, height: 865 },
+    imageSize: { width: 2000, height: 1125 },
     imageAlt: "Sky Ridge Medical Center main entrance at dusk",
   },
   {
@@ -215,7 +215,7 @@ export const caseStudies: CaseStudy[] = [
     ],
     facts: [],
     image: "/img/case-studies/amberwood-post-acute.jpg",
-    imageSize: { width: 1800, height: 714 },
+    imageSize: { width: 2000, height: 1333 },
     imageAlt: "Amberwood Post Acute entrance and sign",
     gallery: [
       {
@@ -240,8 +240,15 @@ export const caseStudies: CaseStudy[] = [
             title: "Resident corridors",
             before: { src: "/img/case-studies/amberwood/ba-corridor-before.jpg", alt: "Resident corridor before the refresh" },
             after: { src: "/img/case-studies/amberwood/ba-corridor-after.jpg", alt: "Refreshed resident corridor with new flooring as handrails go in" },
-            width: 900,
-            height: 1200,
+            width: 1200,
+            height: 900,
+          },
+          {
+            title: "Cafeteria",
+            before: { src: "/img/case-studies/amberwood/ba-cafeteria-before.jpg", alt: "Cafeteria before, with the old gray media wall and worn flooring" },
+            after: { src: "/img/case-studies/amberwood/ba-cafeteria-after.jpg", alt: "Cafeteria after, with new flooring, lighting, and green media wall" },
+            width: 1200,
+            height: 900,
           },
         ],
         photos: [],
@@ -263,20 +270,19 @@ export const caseStudies: CaseStudy[] = [
         quote:
           "Spaces like these set the tone for residents, families, and the team who show up every day to care for them. When the environment feels warm and well cared for, people feel it too.",
         photos: [
-          { src: "/img/case-studies/amberwood/nurse-station-lounge.jpg", alt: "Nursing station with a lounge seating area in front", caption: "Nursing station and lounge", width: 880, height: 930 },
           { src: "/img/case-studies/amberwood/finished-cafeteria.jpg", alt: "Cafeteria with new pendant lighting and green media wall", caption: "Cafeteria", width: 1600, height: 1066 },
-          { src: "/img/case-studies/amberwood/lobby-fireplace.jpg", alt: "Lobby with a tiled fireplace wall and stone reception desk", caption: "Lobby", width: 1040, height: 1180 },
-          { src: "/img/case-studies/amberwood/hallway.jpg", alt: "Bright resident corridor with new flooring", caption: "Resident corridor", width: 910, height: 1180 },
+          { src: "/img/case-studies/amberwood/lobby-lounge.jpg", alt: "Lobby lounge with a tiled fireplace, blue sofa, and the nurses' station beyond", caption: "Lobby and nurses' station", width: 1800, height: 1202 },
+          { src: "/img/case-studies/amberwood/hallway.jpg", alt: "Bright resident corridor with new flooring", caption: "Resident corridor", width: 1800, height: 1196 },
           { src: "/img/case-studies/amberwood/finished-handrail.jpg", alt: "New corridor handrail and stone tile corner", caption: "Handrail and stone detail", width: 1600, height: 1066 },
-          { src: "/img/case-studies/amberwood/exterior-sign.jpg", alt: "Amberwood Post Acute entrance sign and landscaping", caption: "Front entrance", width: 1080, height: 780 },
-          { src: "/img/case-studies/amberwood/aerial-roof.jpg", alt: "Aerial view of the Amberwood building and courtyard", caption: "From above", width: 550, height: 1100 },
+          { src: "/img/case-studies/amberwood/exterior-sign.jpg", alt: "Amberwood Post Acute entrance sign and landscaping", caption: "Front entrance", width: 1772, height: 1316 },
+          { src: "/img/case-studies/amberwood/aerial-roof.jpg", alt: "Aerial view of the Amberwood building and courtyard", caption: "From above", width: 1766, height: 1326 },
         ],
       },
       {
         title: "celebrating with the amberwood team",
         photos: [
-          { src: "/img/case-studies/amberwood/open-house.jpg", alt: "Togala team member holding a gift basket under a balloon arch at the Amberwood entrance", caption: "Open house at Amberwood", width: 1080, height: 1180 },
-          { src: "/img/case-studies/amberwood/team.jpg", alt: "Two Togala team members smiling on site", caption: "The Togala team on site", width: 1000, height: 1180 },
+          { src: "/img/case-studies/amberwood/open-house.jpg", alt: "Togala team member holding a gift basket under a balloon arch at the Amberwood entrance", caption: "Open house at Amberwood", width: 1800, height: 1350 },
+          { src: "/img/case-studies/amberwood/team.jpg", alt: "Two Togala team members smiling on site", caption: "The Togala team on site", width: 1400, height: 1867 },
         ],
       },
     ],

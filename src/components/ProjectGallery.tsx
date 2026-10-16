@@ -50,19 +50,16 @@ export default function ProjectGallery({ groups }: { groups: GalleryGroup[] }) {
               </blockquote>
             )}
             {group.comparisons && (
-              <div className="mx-auto mt-8 flex max-w-[980px] flex-wrap justify-center gap-6">
+              <div className="mx-auto mt-8 grid max-w-[980px] gap-6 sm:grid-cols-2">
                 {group.comparisons.map((c) => (
-                  <div
-                    key={c.title}
-                    className={`w-full ${c.height > c.width ? "sm:max-w-[340px]" : "sm:w-[calc(50%-12px)]"}`}
-                  >
-                    <BeforeAfter comparison={c} />
-                  </div>
+                  <BeforeAfter key={c.title} comparison={c} />
                 ))}
               </div>
             )}
             {group.photos.length > 0 && (
-            <ul className="mt-8 columns-2 gap-3 sm:gap-4 lg:columns-3">
+            <ul
+              className={`mt-8 columns-2 gap-3 sm:gap-4 ${group.photos.length % 3 === 0 || group.photos.length > 4 ? "lg:columns-3" : "mx-auto max-w-[760px]"}`}
+            >
               {group.photos.map((photo, pi) => (
                 <li key={photo.src} className="mb-3 break-inside-avoid sm:mb-4">
                   <button
