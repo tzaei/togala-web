@@ -1,3 +1,5 @@
+import type { Comparison } from "@/components/BeforeAfter";
+
 /**
  * Case studies, from "Capabilities - Case Studies.pdf" (Marketing/02 Sales
  * Collateral). Hidden for now: the pages are noindex, not in the sitemap, and
@@ -27,7 +29,13 @@ export type CaseStudy = {
 };
 
 export type GalleryPhoto = { src: string; alt: string; caption: string; width: number; height: number };
-export type GalleryGroup = { title: string; quote?: string; photos: GalleryPhoto[] };
+export type GalleryGroup = {
+  title: string;
+  quote?: string;
+  /** Drag-to-compare before/after pairs, shown above the photos. */
+  comparisons?: Comparison[];
+  photos: GalleryPhoto[];
+};
 
 const svc = {
   defect: { title: "Construction Defect Consulting", href: "/construction-defect-consulting" },
@@ -211,14 +219,55 @@ export const caseStudies: CaseStudy[] = [
     imageAlt: "Amberwood Post Acute entrance and sign",
     gallery: [
       {
+        title: "before & after",
+        quote: "In healthcare spaces, precision matters. Every surface should feel solid, durable, and built to last.",
+        comparisons: [
+          {
+            title: "Cafeteria media wall",
+            before: { src: "/img/case-studies/amberwood/ba-media-wall-before.jpg", alt: "Original gray media wall with open shelving" },
+            after: { src: "/img/case-studies/amberwood/ba-media-wall-after.jpg", alt: "New green cabinetry media wall with stone tile backsplash" },
+            width: 1200,
+            height: 900,
+          },
+          {
+            title: "Nurses' station",
+            before: { src: "/img/case-studies/amberwood/ba-nurses-station-before.jpg", alt: "Nurses' station before, with worn wall and flooring" },
+            after: { src: "/img/case-studies/amberwood/ba-nurses-station-after.jpg", alt: "Nurses' station after, clad in stone tile with a new countertop" },
+            width: 1200,
+            height: 900,
+          },
+          {
+            title: "Resident corridors",
+            before: { src: "/img/case-studies/amberwood/ba-corridor-before.jpg", alt: "Resident corridor before the refresh" },
+            after: { src: "/img/case-studies/amberwood/ba-corridor-after.jpg", alt: "Refreshed resident corridor with new flooring as handrails go in" },
+            width: 900,
+            height: 1200,
+          },
+        ],
+        photos: [],
+      },
+      {
+        title: "during construction",
+        quote:
+          "These corridors are walked every single day. Residents, families, and staff experience them constantly. Refreshing the spaces in between is what makes the entire building feel renewed.",
+        photos: [
+          { src: "/img/case-studies/amberwood/during-stone-install.jpg", alt: "Installer setting stone tile at the nurses' station", caption: "Stone tile going in at the nurses' station", width: 1200, height: 1600 },
+          { src: "/img/case-studies/amberwood/during-corridor-paint.jpg", alt: "Painter rolling a corridor wall with the floor protected", caption: "Corridor painting", width: 1600, height: 1200 },
+          { src: "/img/case-studies/amberwood/during-handrail-install.jpg", alt: "Installer fitting a new corridor handrail", caption: "New handrails", width: 1066, height: 1600 },
+          { src: "/img/case-studies/amberwood/during-floor-protection.jpg", alt: "Corridor floor protected during the work", caption: "Floors protected while residents stay in place", width: 1600, height: 1200 },
+          { src: "/img/case-studies/amberwood/during-exterior-cuts.jpg", alt: "Crew member making cuts at a table set up outside the building", caption: "Cutting outside to keep dust out of care areas", width: 1600, height: 1200 },
+        ],
+      },
+      {
         title: "the finished spaces",
         quote:
           "Spaces like these set the tone for residents, families, and the team who show up every day to care for them. When the environment feels warm and well cared for, people feel it too.",
         photos: [
           { src: "/img/case-studies/amberwood/nurse-station-lounge.jpg", alt: "Nursing station with a lounge seating area in front", caption: "Nursing station and lounge", width: 880, height: 930 },
+          { src: "/img/case-studies/amberwood/finished-cafeteria.jpg", alt: "Cafeteria with new pendant lighting and green media wall", caption: "Cafeteria", width: 1600, height: 1066 },
           { src: "/img/case-studies/amberwood/lobby-fireplace.jpg", alt: "Lobby with a tiled fireplace wall and stone reception desk", caption: "Lobby", width: 1040, height: 1180 },
-          { src: "/img/case-studies/amberwood/dining-room.jpg", alt: "Dining room with pendant lighting and round tables", caption: "Dining room", width: 1080, height: 1180 },
           { src: "/img/case-studies/amberwood/hallway.jpg", alt: "Bright resident corridor with new flooring", caption: "Resident corridor", width: 910, height: 1180 },
+          { src: "/img/case-studies/amberwood/finished-handrail.jpg", alt: "New corridor handrail and stone tile corner", caption: "Handrail and stone detail", width: 1600, height: 1066 },
           { src: "/img/case-studies/amberwood/exterior-sign.jpg", alt: "Amberwood Post Acute entrance sign and landscaping", caption: "Front entrance", width: 1080, height: 780 },
           { src: "/img/case-studies/amberwood/aerial-roof.jpg", alt: "Aerial view of the Amberwood building and courtyard", caption: "From above", width: 550, height: 1100 },
         ],

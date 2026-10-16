@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { useCallback, useEffect, useRef, useState } from "react";
 import type { GalleryGroup } from "@/data/caseStudies";
+import BeforeAfter from "./BeforeAfter";
 
 export default function ProjectGallery({ groups }: { groups: GalleryGroup[] }) {
   const photos = groups.flatMap((g) => g.photos);
@@ -48,6 +49,19 @@ export default function ProjectGallery({ groups }: { groups: GalleryGroup[] }) {
                 &ldquo;{group.quote}&rdquo;
               </blockquote>
             )}
+            {group.comparisons && (
+              <div className="mx-auto mt-8 flex max-w-[980px] flex-wrap justify-center gap-6">
+                {group.comparisons.map((c) => (
+                  <div
+                    key={c.title}
+                    className={`w-full ${c.height > c.width ? "sm:max-w-[340px]" : "sm:w-[calc(50%-12px)]"}`}
+                  >
+                    <BeforeAfter comparison={c} />
+                  </div>
+                ))}
+              </div>
+            )}
+            {group.photos.length > 0 && (
             <ul className="mt-8 columns-2 gap-3 sm:gap-4 lg:columns-3">
               {group.photos.map((photo, pi) => (
                 <li key={photo.src} className="mb-3 break-inside-avoid sm:mb-4">
@@ -72,6 +86,7 @@ export default function ProjectGallery({ groups }: { groups: GalleryGroup[] }) {
                 </li>
               ))}
             </ul>
+            )}
           </div>
         );
       })}
