@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import CaseStudyCard from "@/components/CaseStudyCard";
+import ProjectGallery from "@/components/ProjectGallery";
 import Reveal from "@/components/Reveal";
 import SectionHeading from "@/components/SectionHeading";
 import { caseStudies, getCaseStudy } from "@/data/caseStudies";
@@ -142,6 +143,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </ol>
         </div>
       </section>
+
+      {/* ── Photo story ──────────────────────────────────────────────────── */}
+      {study.gallery && (
+        <section aria-label="Project photos" className="bg-bone">
+          <div className="mx-auto max-w-[1060px] px-6 py-14 lg:px-10 lg:py-20">
+            <p className="mb-8 text-center text-[0.68rem] font-bold tracking-[0.24em] text-forest">PROJECT PHOTOS</p>
+            <ProjectGallery groups={study.gallery} />
+          </div>
+        </section>
+      )}
 
       {/* ── More projects ────────────────────────────────────────────────── */}
       <section aria-labelledby="more-heading" className="bg-bone">

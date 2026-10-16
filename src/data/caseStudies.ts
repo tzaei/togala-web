@@ -22,7 +22,12 @@ export type CaseStudy = {
   /** Intrinsic size of `image`, so the banner keeps the photo's own shape. */
   imageSize: { width: number; height: number };
   imageAlt: string;
+  /** Optional photo story, rendered as titled groups below the process section. */
+  gallery?: GalleryGroup[];
 };
+
+export type GalleryPhoto = { src: string; alt: string; caption: string; width: number; height: number };
+export type GalleryGroup = { title: string; quote?: string; photos: GalleryPhoto[] };
 
 const svc = {
   defect: { title: "Construction Defect Consulting", href: "/construction-defect-consulting" },
@@ -187,6 +192,7 @@ export const caseStudies: CaseStudy[] = [
     overview:
       "The Amberwood Post Acute project included updates to key interior spaces through the removal and replacement of cabinetry and countertops, new framing at the nursing stations, installation of stone tile, and replacement of existing light fixtures.",
     scope: [
+      "Nursing station, corridor, and cafeteria refresh",
       "Cabinetry and countertops replaced",
       "New framing at the nursing stations",
       "Stone tile installation",
@@ -203,6 +209,28 @@ export const caseStudies: CaseStudy[] = [
     image: "/img/case-studies/amberwood-post-acute.jpg",
     imageSize: { width: 1800, height: 714 },
     imageAlt: "Amberwood Post Acute entrance and sign",
+    gallery: [
+      {
+        title: "the finished spaces",
+        quote:
+          "Spaces like these set the tone for residents, families, and the team who show up every day to care for them. When the environment feels warm and well cared for, people feel it too.",
+        photos: [
+          { src: "/img/case-studies/amberwood/nurse-station-lounge.jpg", alt: "Nursing station with a lounge seating area in front", caption: "Nursing station and lounge", width: 880, height: 930 },
+          { src: "/img/case-studies/amberwood/lobby-fireplace.jpg", alt: "Lobby with a tiled fireplace wall and stone reception desk", caption: "Lobby", width: 1040, height: 1180 },
+          { src: "/img/case-studies/amberwood/dining-room.jpg", alt: "Dining room with pendant lighting and round tables", caption: "Dining room", width: 1080, height: 1180 },
+          { src: "/img/case-studies/amberwood/hallway.jpg", alt: "Bright resident corridor with new flooring", caption: "Resident corridor", width: 910, height: 1180 },
+          { src: "/img/case-studies/amberwood/exterior-sign.jpg", alt: "Amberwood Post Acute entrance sign and landscaping", caption: "Front entrance", width: 1080, height: 780 },
+          { src: "/img/case-studies/amberwood/aerial-roof.jpg", alt: "Aerial view of the Amberwood building and courtyard", caption: "From above", width: 550, height: 1100 },
+        ],
+      },
+      {
+        title: "celebrating with the amberwood team",
+        photos: [
+          { src: "/img/case-studies/amberwood/open-house.jpg", alt: "Togala team member holding a gift basket under a balloon arch at the Amberwood entrance", caption: "Open house at Amberwood", width: 1080, height: 1180 },
+          { src: "/img/case-studies/amberwood/team.jpg", alt: "Two Togala team members smiling on site", caption: "The Togala team on site", width: 1000, height: 1180 },
+        ],
+      },
+    ],
   },
 ];
 
